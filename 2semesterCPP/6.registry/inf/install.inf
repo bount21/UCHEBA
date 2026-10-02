@@ -1,0 +1,58 @@
+[Version]
+Signature="$Windows NT$"
+Provider=%Author%
+Class=Setup
+
+; --- Секция Установки ---
+[DefaultInstall]
+CopyFiles = Hor.CopyFiles
+AddReg    = Hor.AddReg
+
+; --- Секция Отката ---
+[DefaultUninstall]
+DelFiles  = Hor.DelFiles
+DelReg    = Hor.DelReg
+
+; --- Куда копировать файлы ---
+[DestinationDirs]
+Hor.CopyFiles = 10, ShellNew ; C:\Windows\ShellNew
+
+; --- Спецификация файлов для копирования ---
+[SourceDisksNames]
+1 = %DiskName%,,,
+
+[SourceDisksFiles]
+horse.bmp = 1
+
+[Hor.CopyFiles]
+horse.bmp,,,0x00000010 ; Перезаписать файл, если он уже есть
+
+[Hor.DelFiles]
+horse.bmp
+
+; --- Запись в Реестр ---
+[Hor.AddReg]
+; 1. Регистрация расширения и шаблона
+HKCU, "Software\Classes\.hor",,,"Horse.Image.1"
+HKCU, "Software\Classes\.hor\ShellNew","FileName",,"horse.bmp"
+
+; 2. Описание типа и иконка
+HKCU, "Software\Classes\Horse.Image.1",,,"Horse Image"
+HKCU, "Software\Classes\Horse.Image.1\DefaultIcon",,,"D:\INFPROGC++\2semester\6.registry\horse_icon.ico"
+
+; 3. Команда открытия в Paint
+HKCU, "Software\Classes\Horse.Image.1\shell\open\command",,,"""C:\Windows\System32\mspaint.exe"" ""%%1"""
+
+; 4. Кнопка удаления
+HKLM, "Software\Classes\inffile\shell\Uninstall",,,"Delete (Lab)"
+HKLM, "Software\Classes\inffile\shell\Uninstall\command",,,"Rundll32.exe setupapi.dll,InstallHinfSection DefaultUninstall 132 %%1"
+
+; --- Стирание из Реестра при откате ---
+[Hor.DelReg]
+HKCU, "Software\Classes\.hor"
+HKCU, "Software\Classes\Horse.Image.1"
+HKLM, "Software\Classes\inffile\shell\Uninstall"
+
+[Strings]
+Author   = "Student"
+DiskName = "Horse Installation Disk"
