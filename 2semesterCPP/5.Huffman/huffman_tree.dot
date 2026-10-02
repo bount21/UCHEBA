@@ -1,0 +1,17 @@
+digraph HuffmanTree {
+    node [fontname="Arial Black"];
+
+    node0 [shape=circle, label="6"];
+    node1 [shape=circle, label="2"];
+    node3 [shape=box, label="б\nf=1"];
+    node1 -> node3 [label="0"];
+    node4 [shape=box, label="ы\nf=1"];
+    node1 -> node4 [label="1"];
+    node0 -> node1 [label="0"];
+    node2 [shape=circle, label="4"];
+    node9 [shape=box, label="а\nf=2"];
+    node2 -> node9 [label="0"];
+    node10 [shape=box, label="н\nf=2"];
+    node2 -> node10 [label="1"];
+    node0 -> node2 [label="1"];
+}

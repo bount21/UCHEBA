@@ -1,0 +1,3 @@
+D:/INFPROGC++/2semester/5.Huffman/cmake-build-debug/CMakeFiles/5_Huffman.dir
+D:/INFPROGC++/2semester/5.Huffman/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/INFPROGC++/2semester/5.Huffman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
